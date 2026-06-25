@@ -27,4 +27,10 @@ public abstract class Persona {
         Period Edad = Period.between(fechaNacimiento, LocalDate.now());
         return Edad.getYears();
     }
+    public Persona(String identificacion, String nombre, LocalDate fechaNacimiento, int telefono) {
+        this.identificacion = identificacion;
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.telefono = telefono;
+    }
 }

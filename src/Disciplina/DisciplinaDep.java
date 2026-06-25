@@ -2,14 +2,29 @@ package Disciplina;
 
 public final class DisciplinaDep{
     private String nombre;
+
     private String categoria;
     private int capacidadMaxima;
     private int cantidadParticipantes;
+    private Categoria categoria;
+    private int capacidadMaxima;
+    private int cantidadParticipantes;
+    public enum Categoria {
+    Infantil,
+    Juvenil,
+    Adulta
+    }
+     public DisciplinaDep(String nombre, Categoria categoria, int capacidadMaxima) {
+        this.nombre = nombre;
+        setCategoria(categoria);
+        this.capacidadMaxima = capacidadMaxima;
+        this.cantidadParticipantes = 0;
+    }
     public String getNombre() {
         return nombre;
     }
-
     public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -24,7 +39,6 @@ public final class DisciplinaDep{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
     public void setCategoria(String categoria) {
         if (categoria.equalsIgnoreCase("Infantil") ||
             categoria.equalsIgnoreCase("Juvenil") ||
@@ -34,6 +48,8 @@ public final class DisciplinaDep{
     }else{
         System.out.println("Categoria invalida");
       }
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public void setCapacidadMaxima(int capacidadMaxima) {
@@ -62,4 +78,17 @@ public final class DisciplinaDep{
         return cantidadParticipantes;
     }
 
+}
+
+    public boolean tieneEspaciosDisponibles() {
+        return cantidadParticipantes < capacidadMaxima;
+    }
+
+    public boolean capacidadLlena() {
+        return cantidadParticipantes >= capacidadMaxima;
+    }
+
+    public int obtenerCantidadParticipantes() {
+        return cantidadParticipantes;
+    }
 }
