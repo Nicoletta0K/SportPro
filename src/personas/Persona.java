@@ -34,5 +34,8 @@ public abstract class Persona {
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
     }
-    
+    @Override
+    public String toString() {
+        return "Persona{" + "identificacion=" + identificacion + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento.toString() + ", telefono=" + telefono + '}';
+    }
 }
