@@ -91,4 +91,13 @@ public final class DisciplinaDep{
     public int obtenerCantidadParticipantes() {
         return cantidadParticipantes;
     }
+
+    @Override
+    public String toString() {
+        return "\n Nombre: "+nombre+ 
+               "\n Categoria: "+categoria+
+               "\n Capacidad Maxima: "+capacidadMaxima+
+               "\n CantidadParticipantes: "+cantidadParticipantes;
+    }
+    
 }
