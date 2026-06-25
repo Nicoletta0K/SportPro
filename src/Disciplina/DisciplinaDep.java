@@ -1,6 +1,11 @@
 package Disciplina;
-
-public final class DisciplinaDep{
+import personas.Persona;
+public class DisciplinaDep {
+    public enum Categoria {
+        INFANTIL,
+        JUVENIL,
+        ADULTA
+    }
     private String nombre;
 
     private String categoria;
@@ -8,16 +13,13 @@ public final class DisciplinaDep{
     private int cantidadParticipantes;
     private Categoria categoria;
     private int capacidadMaxima;
+    private final Persona[] participantes;
     private int cantidadParticipantes;
-    public enum Categoria {
-    Infantil,
-    Juvenil,
-    Adulta
-    }
-     public DisciplinaDep(String nombre, Categoria categoria, int capacidadMaxima) {
+    public DisciplinaDep(String nombre, Categoria categoria, int capacidadMaxima) {
         this.nombre = nombre;
-        setCategoria(categoria);
+        this.categoria = categoria;
         this.capacidadMaxima = capacidadMaxima;
+        this.participantes = new Persona[capacidadMaxima];
         this.cantidadParticipantes = 0;
     }
     public String getNombre() {
@@ -56,8 +58,13 @@ public final class DisciplinaDep{
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public void setCantidadParticipantes(int cantidadParticipantes) {
-        this.cantidadParticipantes = cantidadParticipantes;
+    public boolean agregarParticipante(Persona p) {
+        if (cantidadParticipantes < capacidadMaxima) {
+            participantes[cantidadParticipantes] = p;
+            cantidadParticipantes++;
+            return true;
+        }
+        return false;
     }
     public DisciplinaDep(String nombre, String categoria, int capacidadMaxima, int cantidadParticipantes) {
         this.nombre = nombre;
@@ -92,12 +99,9 @@ public final class DisciplinaDep{
         return cantidadParticipantes;
     }
 
-    @Override
-    public String toString() {
-        return "\n Nombre: "+nombre+ 
-               "\n Categoria: "+categoria+
-               "\n Capacidad Maxima: "+capacidadMaxima+
-               "\n CantidadParticipantes: "+cantidadParticipantes;
+    public void mostrarParticipantes() {
+        for (int i = 0; i < cantidadParticipantes; i++) {
+            System.out.println(participantes[i]);
+        }
     }
-    
 }
