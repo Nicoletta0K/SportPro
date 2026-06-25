@@ -7,14 +7,14 @@ import Disciplina.DisciplinaDep;
 import participantes.Participante;
 
 public class Entrenamiento {
-    private LocalDate Fecha;
+    private LocalDate fecha;
     private LocalTime horaInicio;
     private double duracionHoras;
     private DisciplinaDep disciplina;
     private ArrayList<Participante> asistentes;
 
     public Entrenamiento(LocalDate fecha, LocalTime horaInicio, double duracionHoras, DisciplinaDep disciplina) {
-        this.Fecha = fecha;
+        this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.duracionHoras = duracionHoras;
         this.disciplina = disciplina;
@@ -22,7 +22,7 @@ public class Entrenamiento {
     }
 
     public LocalDate getFecha() {
-        return Fecha;
+        return fecha;
     }
 
     public LocalTime getHoraInicio() {
@@ -42,7 +42,7 @@ public class Entrenamiento {
     }
 
     public void setFecha(LocalDate fecha) {
-        this.Fecha = Fecha;
+        this.fecha = fecha;
     }
 
     public void setHoraInicio(LocalTime horaInicio) {
@@ -62,5 +62,16 @@ public class Entrenamiento {
         if (!asistentes.contains(participante)) {
             asistentes.add(participante);
         }
+        
     }
+    @Override
+public String toString() {
+    return "Entrenamiento{" +
+            "fecha=" + fecha +
+            ", horaInicio=" + horaInicio +
+            ", duracionHoras=" + duracionHoras +
+            ", disciplina=" + disciplina.getNombre() +
+            ", cantidadAsistentes=" + asistentes.size() +
+            '}';
+}
 }
