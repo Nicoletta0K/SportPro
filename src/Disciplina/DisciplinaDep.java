@@ -14,8 +14,12 @@ public class DisciplinaDep {
     public DisciplinaDep(String nombre, Categoria categoria, int capacidadMaxima) {
         this.nombre = nombre;
         this.categoria = categoria;
-        this.capacidadMaxima = capacidadMaxima;
-        this.participantes = new Persona[capacidadMaxima];
+        if (capacidadMaxima <= 0) {
+            this.capacidadMaxima = 1;
+        } else {
+            this.capacidadMaxima = capacidadMaxima;
+        }
+        this.participantes = new Persona[this.capacidadMaxima];
         this.cantidadParticipantes = 0;
     }
 
@@ -44,7 +48,9 @@ public class DisciplinaDep {
     }
 
     public void setCapacidadMaxima(int capacidadMaxima) {
-        this.capacidadMaxima = capacidadMaxima;
+        if (capacidadMaxima > 0) {
+            this.capacidadMaxima = capacidadMaxima;
+        }
     }
 
     public boolean agregarParticipante(Persona p) {
@@ -72,5 +78,19 @@ public class DisciplinaDep {
         for (int i = 0; i < cantidadParticipantes; i++) {
             System.out.println(participantes[i]);
         }
+    }
+
+    public double porcentajeOcupacion() {
+        return (cantidadParticipantes * 100.0) / capacidadMaxima;
+    }
+
+    @Override
+    public String toString() {
+        return "Disciplina: " + nombre +
+                "\nCategoria: " + categoria +
+                "\nCapacidad Maxima: " + capacidadMaxima +
+                "\nParticipantes: " + cantidadParticipantes +
+                "\nEspacios disponibles: " + (capacidadMaxima - cantidadParticipantes) +
+                "\nOcupacion: "+ porcentajeOcupacion() + "%";
     }
 }
