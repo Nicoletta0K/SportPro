@@ -9,7 +9,7 @@ public final class DisciplinaDep{
     Infantil,
     Juvenil,
     Adulta
-}
+    }
      public DisciplinaDep(String nombre, Categoria categoria, int capacidadMaxima) {
         this.nombre = nombre;
         setCategoria(categoria);
