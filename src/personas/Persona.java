@@ -1,5 +1,5 @@
 package personas;
-
+import java.time.Period;
 import java.time.LocalDate;
 
 public abstract class Persona {
@@ -7,4 +7,24 @@ public abstract class Persona {
     protected String nombre;
     protected LocalDate fechaNacimiento;
     public int telefono;
+
+    public String getIdentificacion() {
+        return identificacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+    public int getEdad(){
+        Period Edad = Period.between(fechaNacimiento, LocalDate.now());
+        return Edad.getYears();
+    }
 }
